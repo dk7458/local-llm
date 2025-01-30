@@ -1,24 +1,39 @@
 {
-    "Local-LLM-Catalog": {
-      "name": "Local-LLM-Catalog",
-      "icon": {
-        "url": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png"
-      },
-      "official": {
-        "value": false
-      },
-      "preferred_trains": {
-        "charts": true
-      },
-      "trains": {
-        "charts": {
-          "name": "charts",
-          "location": "https://github.com/dk7458/local-llm-stack.git",
-          "healthy": true,
-          "cached": false,
-          "error": false,
-          "branches": []
-        }
+    "charts": {
+      "local-llm-stack": {
+        "app_readme": "<h1>Local LLM Stack</h1>\n<p>This chart deploys a local LLM environment, including multiple models for code generation, reasoning, and file interaction.</p>",
+        "categories": [
+          "ai",
+          "machine-learning"
+        ],
+        "description": "Local LLM stack for code generation and AI experimentation on TrueNAS SCALE.",
+        "healthy": true,
+        "healthy_error": null,
+        "home": "https://github.com/dk7458/local-llm-stack",
+        "location": "/charts/local-llm-stack",
+        "latest_version": "0.1.0",
+        "latest_app_version": "v1.0",
+        "latest_human_version": "v1.0_0.1.0",
+        "last_update": "2025-01-30 19:24:11",
+        "name": "local-llm-stack",
+        "recommended": false,
+        "title": "Local LLM Stack",
+        "maintainers": [
+          {
+            "name": "dk7458",
+            "url": "https://github.com/dk7458",
+            "email": "dk7458@example.com"
+          }
+        ],
+        "tags": [
+          "llm",
+          "ai"
+        ],
+        "screenshots": [],
+        "sources": [
+          "https://github.com/dk7458/local-llm-stack"
+        ]
       }
     }
   }
+  
