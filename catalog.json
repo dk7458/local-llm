@@ -1,0 +1,14 @@
+{
+    "name": "local-llm-stack",
+    "full_name": "My Local LLM Catalog",
+    "description": "A custom TrueNAS SCALE catalog containing a local LLM Helm chart.",
+    "location": "https://github.com/",
+    "healthy": true,
+    "cached": false,
+    "error": false,
+    "official": false,
+    "train": "charts",
+    "categories": [],
+    "tags": []
+  }
+  
