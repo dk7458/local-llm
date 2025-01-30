@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-deepseek
+{{- include "local-llm-stack.labels" . | nindent 2 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-deepseek
+  template:
+    metadata:
+      labels:
+        app: ollama-deepseek
+    spec:
+      containers:
+      - name: ollama-deepseek
+        image: {{ .Values.deepseek.image }}
+        imagePullPolicy: {{ .Values.deepseek.imagePullPolicy }}
+        env:
+        - name: OLLAMA_MODEL
+          value: "/models/{{ .Values.deepseek.modelRelativePath }}/{{ .Values.deepseek.modelFile }}"
+        - name: OLLAMA_PORT
+          value: "{{ .Values.deepseek.port }}"
+        ports:
+        - containerPort: {{ .Values.deepseek.port }}
+          name: ollama-port
+        volumeMounts:
+        - name: llm-models
+          mountPath: /models/{{ .Values.deepseek.modelRelativePath }}
+          subPath: {{ .Values.deepseek.modelRelativePath }}
+      volumes:
+      - name: llm-models
+        hostPath:
+          path: {{ .Values.hostPaths.models }}
+          type: Directory

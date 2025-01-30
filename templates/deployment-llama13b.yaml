@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llama13b
+{{- include "local-llm-stack.labels" . | nindent 2 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llama13b
+  template:
+    metadata:
+      labels:
+        app: llama13b
+    spec:
+      containers:
+      - name: llama13b
+        image: {{ .Values.llama13b.image }}
+        args:
+        - "--model"
+        - "/models/{{ .Values.llama13b.modelRelativePath }}/{{ .Values.llama13b.modelFile }}"
+        - "--port"
+        - "{{ .Values.llama13b.port }}"
+        - "--n-gpu-layers"
+        - "{{ .Values.llama13b.gpuLayers }}"
+        ports:
+        - containerPort: {{ .Values.llama13b.port }}
+          name: llama13b-port
+        volumeMounts:
+        - name: llm-models
+          mountPath: /models/{{ .Values.llama13b.modelRelativePath }}
+          subPath: {{ .Values.llama13b.modelRelativePath }}
+      volumes:
+      - name: llm-models
+        hostPath:
+          path: {{ .Values.hostPaths.models }}
+          type: Directory

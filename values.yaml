@@ -1,0 +1,72 @@
+# Common hostPaths on your TrueNAS system
+hostPaths:
+  models: "/mnt/p02l/llm/models"
+  workspace: "/mnt/p02l/llm/workspace"
+
+# Ollama - DeepSeek
+deepseek:
+  enabled: true
+  image: "ollama/ollama:latest"
+  imagePullPolicy: IfNotPresent
+  modelRelativePath: "deepseek-1.3b-gguf"   # folder name under 'models' hostPath
+  modelFile: "model.gguf"
+  port: 11434
+
+# llama.cpp - Code Llama 7B
+llama7b:
+  enabled: true
+  image: "ghcr.io/nyanko-ml/llama.cpp:server"
+  modelRelativePath: "codellama-7b-gguf"
+  modelFile: "model.gguf"
+  port: 8080
+  gpuLayers: 24
+
+# llama.cpp - 13B model
+llama13b:
+  enabled: true
+  image: "ghcr.io/nyanko-ml/llama.cpp:server"
+  modelRelativePath: "codellama-13b-gguf"
+  modelFile: "model.gguf"
+  port: 8081
+  gpuLayers: 20
+
+# FastAPI - File I/O
+fileio:
+  enabled: true
+  image: "python:3.9-slim"
+  port: 8000
+
+# ConfigMap with main.py code
+fileioMainPy: |
+  from fastapi import FastAPI, Body, HTTPException
+  from pydantic import BaseModel
+  from pathlib import Path
+
+  app = FastAPI()
+  BASE_DIR = Path("/workspace")
+
+  class FileRequest(BaseModel):
+      filename: str
+      content: str = ""
+
+  @app.post("/write")
+  def write_file(req: FileRequest):
+      file_path = BASE_DIR / req.filename
+      try:
+          file_path.write_text(req.content)
+          return {"status": "ok", "filename": req.filename}
+      except Exception as e:
+          raise HTTPException(status_code=500, detail=str(e))
+
+  @app.get("/read")
+  def read_file(filename: str):
+      file_path = BASE_DIR / filename
+      if not file_path.exists():
+          raise HTTPException(status_code=404, detail="File not found")
+      return {"content": file_path.read_text()}
+
+# Ollama WebUI
+webui:
+  enabled: true
+  image: "ollama/webui:latest"
+  port: 3000

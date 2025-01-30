@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fileio-code-cm
+{{- include "local-llm-stack.labels" . | nindent 2 }}
+data:
+  main.py: |
+    {{- .Values.fileioMainPy | nindent 4 }}

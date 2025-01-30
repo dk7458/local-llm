@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-io-fastapi
+{{- include "local-llm-stack.labels" . | nindent 2 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: file-io-fastapi
+  template:
+    metadata:
+      labels:
+        app: file-io-fastapi
+    spec:
+      containers:
+      - name: file-io
+        image: {{ .Values.fileio.image }}
+        command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "{{ .Values.fileio.port }}"]
+        volumeMounts:
+        - name: llm-workspace
+          mountPath: /workspace
+        - name: fileio-code
+          mountPath: /app
+          readOnly: true
+        ports:
+        - containerPort: {{ .Values.fileio.port }}
+          name: file-io-port
+      volumes:
+      - name: llm-workspace
+        hostPath:
+          path: {{ .Values.hostPaths.workspace }}
+          type: Directory
+      - name: fileio-code
+        configMap:
+          name: fileio-code-cm

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama-webui
+{{- include "local-llm-stack.labels" . | nindent 2 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ollama-webui
+  template:
+    metadata:
+      labels:
+        app: ollama-webui
+    spec:
+      containers:
+      - name: ollama-webui
+        image: {{ .Values.webui.image }}
+        ports:
+        - containerPort: {{ .Values.webui.port }}
+          name: webui-port
