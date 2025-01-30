@@ -3,7 +3,9 @@
       "icon": {
         "url": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png"
       },
-      "official": false,
+      "official": {
+        "value": false
+      },
       "preferred_trains": {
         "charts": true
       },
