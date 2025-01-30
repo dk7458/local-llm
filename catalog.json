@@ -1,24 +1,22 @@
 {
-    "Local-LLM-Catalog": {
-      "name": "Local-LLM-Catalog",
-      "icon": {
-        "url": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png"
-      },
-      "official": {
-        "value": false
-      },
-      "preferred_trains": {
-        "charts": true
-      },
-      "trains": {
-        "charts": {
-          "name": "charts",
-          "location": "https://github.com/dk7458/local-llm-stack.git",
-          "healthy": true,
-          "cached": false,
-          "error": false,
-          "branches": []
-        }
+    "name": "Local-LLM-Catalog",
+    "icon": {
+      "url": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png"
+    },
+    "official": {
+      "value": false
+    },
+    "preferred_trains": {
+      "charts": true
+    },
+    "trains": {
+      "charts": {
+        "name": "charts",
+        "location": "https://github.com/dk7458/local-llm-stack.git",
+        "healthy": true,
+        "cached": false,
+        "error": false,
+        "branches": []
       }
     }
   }
