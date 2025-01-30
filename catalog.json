@@ -2,7 +2,7 @@
     "name": "local-llm",
     "full_name": "My Local LLM Catalog",
     "description": "A custom TrueNAS SCALE catalog for deploying local LLM Helm charts.",
-    "location": "https://github.com/<your-username>/<your-repo>.git",
+    "location": "https://github.com/dk7458/local-llm.git",
     "icon": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png",
     "healthy": true,
     "cached": false,
