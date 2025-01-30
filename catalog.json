@@ -1,14 +1,18 @@
 {
-    "name": "local-llm-catalog",
+    "name": "Local-LLM-Catalog",
     "icon": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png",
     "official": false,
+  
+
     "preferred_trains": [
       "charts"
     ],
+
     "trains": {
+  
       "charts": {
         "name": "charts",
-        "location": "https://github.com/dk7458/local-llm.git",
+        "location": "https://github.com/dk7458/local-llm-stack.git",
         "healthy": true,
         "cached": false,
         "error": false,
