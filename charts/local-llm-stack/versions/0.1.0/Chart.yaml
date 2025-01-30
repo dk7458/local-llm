@@ -1,0 +1,6 @@
+apiVersion: v2
+name: local-llm-stack
+description: "Local LLM Stack for code generation and reasoning"
+type: application
+version: 0.1.0
+appVersion: "1.0"

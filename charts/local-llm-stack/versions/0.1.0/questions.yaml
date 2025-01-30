@@ -1,0 +1,11 @@
+---
+questions:
+  - variable: "global.imagePullPolicy"
+    default: "IfNotPresent"
+    description: "Image Pull Policy"
+    type: string
+  - variable: "gpuLayers7b"
+    default: 24
+    description: "Number of GPU layers for Code Llama 7B"
+    type: int
+    required: false
