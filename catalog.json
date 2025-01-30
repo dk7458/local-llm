@@ -1,6 +1,8 @@
 {
     "Local-LLM-Catalog": {
-      "icon": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png",
+      "icon": {
+        "url": "https://cdn.iconscout.com/icon/free/png-256/brain-1628836-1381155.png"
+      },
       "official": false,
       "preferred_trains": {
         "charts": true
