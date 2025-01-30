@@ -1,6 +1,6 @@
 apiVersion: v2
 name: local-llm-stack
-description: A local LLM stack with multiple models and a file IO service for TrueNAS Scale
+description: "Local LLM Stack with multiple containers"
 type: application
 version: 0.1.0
 appVersion: "1.0"
