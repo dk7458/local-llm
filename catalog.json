@@ -1,5 +1,5 @@
 {
-    "name": "local-llm-stack",
+    "name": "local-llm",
     "full_name": "My Local LLM Catalog",
     "description": "A custom TrueNAS SCALE catalog for deploying local LLM Helm charts.",
     "location": "https://github.com/<your-username>/<your-repo>.git",
